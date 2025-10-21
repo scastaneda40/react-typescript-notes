@@ -82,3 +82,4 @@ Here are some resources to help with quick React/TypeScript reference:
 - [Common React UI Components Cheat Sheet](components.md)
 - [React Hooks Examples Cheat Sheet](hookexamples.md)
 - [TypeScript Patterns for React Cheat Sheet](typescript.md)
+- [Common React Patterns Cheat Sheet](react-patterns.md)
