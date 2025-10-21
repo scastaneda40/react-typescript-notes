@@ -711,7 +711,12 @@ const DataFetcherComponent: React.FC = () => {
       }
     };
 
-    fetchPosts();
+    fetchPosts(); // Call the async function inside useEffect
+
+    // Optional cleanup function
+    return () => {
+      // Any cleanup logic here, e.g., aborting fetch requests
+    };
   }, []); // Empty dependency array means this effect runs once on mount
 
   if (loading) {
