@@ -6,7 +6,7 @@ This document provides quick reference examples for common React UI patterns.
 
 A simple, reusable button component.
 
-```typescript
+````typescript
 import React from "react";
 
 interface ButtonProps {
@@ -65,7 +65,24 @@ export default Button;
 //     </div>
 //   );
 // };
-```
+
+### Explanation of `children` Prop
+
+The `children` prop is a special prop in React that allows you to pass components or elements as data to other components by nesting them inside the opening and closing tags.
+
+**Significance:**
+
+1.  **Content Flexibility**: It makes components highly reusable and flexible. Instead of defining a specific `text` prop for the button's label, `children` allows you to pass any valid React node (text, other components, HTML elements) directly between the `<Button>` and `</Button>` tags.
+    *   **Example**:
+        ```jsx
+        <Button onClick={handleClick}>Click Me</Button> // 'Click Me' is the children
+        <Button onClick={handleIconClick}><img src="icon.png" alt="icon" /></Button> // An image is the children
+        ```
+2.  **Component Composition**: It's a core concept for component composition, enabling you to build complex UIs by combining simpler components. The parent component (e.g., `Button`) doesn't need to know the exact content it will render; it just renders whatever is passed as `children`.
+3.  **Standard Practice**: Using `children` for content is the idiomatic React way for components that act as wrappers or containers for other content.
+
+In the `Button` component, `children: React.ReactNode;` in the `ButtonProps` interface types the `children` prop, indicating it can be any renderable React content (strings, numbers, elements, arrays of elements, or fragments). The `{children}` inside the `<button>` element then renders this content.
+````
 
 ## 2. Form with Validation (Controlled Component)
 
