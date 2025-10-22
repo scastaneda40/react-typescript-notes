@@ -822,3 +822,45 @@ export default DataFetcherComponent;
 // Usage Example:
 // <DataFetcherComponent />
 ```
+
+## 9. Create, Toggle, Delete
+
+```typescript
+
+TOGGLE/UPDATE an item in state
+
+const toggleCompleted = (id: string) => {
+    setTasks((prev) =>
+      prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+    );
+  };
+
+setItems(prev =>
+  prev.map(item =>
+    item.id === id ? { ...item, completed: !item.completed } : item
+  )
+);
+
+ADD/CREATE a new item
+
+ const addNewTask = (title) => {
+    setTasks((prev) => [
+      ...prev,
+      { id: Date.now().toString(), title: title, completed: false },
+    ]);
+  };
+
+setItems(prev => [
+  ...prev,
+  { id: Date.now().toString(), title, completed: false },
+]);
+
+DELETE/REMOVE a item
+
+ const deleteItem = (id: string) => {
+    const updatedItems = tasks.filter((task) => task.id !== id);
+    setTasks(updatedItems);
+  };
+
+setItems(prev => prev.filter(item => item.id !== id));
+```

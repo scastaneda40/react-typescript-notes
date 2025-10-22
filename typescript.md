@@ -474,3 +474,23 @@ const ThemedContent: React.FC = () => {
 //   );
 // };
 ```
+
+## 6. Typing Context API
+
+```typescript
+onAdd: (title: string) => void;
+
+onDelete: (id: string) => void;
+
+onToggle: (id: string) => void;
+
+onUpdate: (id: string, data: Partial<Task>) => void;
+
+onSubmit: (form: FormData) => void;
+
+onSearch: (query: string) => void;
+
+onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+
+onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
+```
