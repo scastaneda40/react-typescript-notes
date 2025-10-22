@@ -475,7 +475,7 @@ const ThemedContent: React.FC = () => {
 // };
 ```
 
-## 6. Typing Context API
+## 7. Common Types
 
 ```typescript
 onAdd: (title: string) => void;
@@ -494,3 +494,14 @@ onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 
 onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
 ```
+## 7. Common Utility
+
+| Utility        | Description             | Example                |           |
+| -------------- | ----------------------- | ---------------------- | --------- |
+| `Partial<T>`   | All fields optional     | `Partial<Task>`        |           |
+| `Pick<T, K>`   | Choose specific fields  | `Pick<Task, 'id'       | 'title'>` |
+| `Omit<T, K>`   | Exclude specific fields | `Omit<Task, 'id'>`     |           |
+| `Record<K, T>` | Object map              | `Record<string, Task>` |           |
+
+
+
