@@ -385,3 +385,65 @@ export default SelectInput;
 //   );
 // };
 ```
+
+## 5. Simple Form
+
+```typescript
+import React, { useState } from "react";
+
+export const AddTaskForm = ({ addNewTask }: TaskFormProps) => {
+  const [inputValue, setInputValue] = useState<string>("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!inputValue.trim()) return;
+    const trimmedInput = inputValue.trim();
+    addNewTask(trimmedInput);
+    setInputValue("");
+  };
+
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+
+  return (
+    <>
+      <h3>Add Task</h3>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={handleChange} value={inputValue} />
+        <button type="submit">Submit</button>
+      </form>
+    </>
+  );
+};
+```
+
+## 6. Toggle Function
+
+```typescript
+const toggleCompleted = (id: string) => {
+  setTasks((prev) =>
+    prev.map((t) => (t.id === id ? { ...t, completed: !t.completed } : t))
+  );
+};
+```
+
+## 6. Creat Function
+
+```typescript
+const addNewTask = (title) => {
+  setTasks((prev) => [
+    ...prev,
+    { id: Date.now().toString(), title: title, completed: false },
+  ]);
+};
+```
+
+## 6. Delete Function
+
+```typescript
+const deleteItem = (id: string) => {
+  const updatedItems = tasks.filter((task) => task.id !== id);
+  setTasks(updatedItems);
+};
+```

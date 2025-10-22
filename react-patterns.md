@@ -747,3 +747,78 @@ export default DataFetcherComponent;
 // Usage Example:
 // <DataFetcherComponent />
 ```
+
+## 9. Data Fetching Pattern w/ Filter (`useEffect` and `useState`)
+
+A common pattern for fetching asynchronous data from an API and managing loading and error states with a filter
+
+```typescript
+import React, { useState, useEffect } from "react";
+
+interface Post {
+  id: number;
+  title: string;
+  body: string;
+}
+
+const DataFetcherComponent: React.FC = () => {
+  const [posts, setPosts] = useState<Post[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts?_limit=5"
+        );
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data: Post[] = await response.json();
+        setPosts(data);
+      } catch (err: any) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPosts(); // Call the async function inside useEffect
+
+    // Optional cleanup function
+    return () => {
+      // Any cleanup logic here, e.g., aborting fetch requests
+    };
+  }, []); // Empty dependency array means this effect runs once on mount
+
+  if (loading) {
+    return <div className="p-4">Loading posts...</div>;
+  }
+
+  if (error) {
+    return <div className="p-4 text-red-600">Error: {error}</div>;
+  }
+
+  return (
+    <div className="p-4 border rounded shadow mt-8">
+      <h2 className="text-2xl font-bold mb-4">Data Fetching Example</h2>
+      <ul className="space-y-4">
+        {posts.map((post) => (
+          <li key={post.id} className="p-3 border rounded bg-blue-50">
+            <h3 className="text-lg font-semibold">{post.title}</h3>
+            <p className="text-gray-700">{post.body.substring(0, 100)}...</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default DataFetcherComponent;
+
+// Usage Example:
+// <DataFetcherComponent />
+```
