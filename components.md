@@ -428,7 +428,7 @@ const toggleCompleted = (id: string) => {
 };
 ```
 
-## 6. Creat Function
+## 7. Creat Function
 
 ```typescript
 const addNewTask = (title) => {
@@ -439,7 +439,7 @@ const addNewTask = (title) => {
 };
 ```
 
-## 6. Delete Function
+## 8. Delete Function
 
 ```typescript
 const deleteItem = (id: string) => {
